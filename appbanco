@@ -1,0 +1,67 @@
+class Cliente:
+    def __init__(self, nome, cpf, idade):
+        self.nome = nome
+        self.cpf = cpf
+        self.idade = idade
+
+
+
+
+class Conta:
+    def __init__(self, cliente, saldo, limite):
+        self.cliente = cliente
+        self.saldo = saldo
+        self.limite = limite
+
+    def sacar(self, valor):
+        if valor <= self.saldo + self.limite:
+            self.saldo -= valor
+            print(f"saque de {valor} realizado com sucesso")
+        else:
+            print("saldo insuficiente!")
+
+    def depositar(self, valor):
+        self.saldo += valor
+        print(f"deposito de {valor} realizado com sucesso")
+
+    def consultar_saldo(self):
+        print(f"Saldo de {self.saldo}")
+
+from software import Cliente
+from software import Conta
+
+def criar_cliente():
+    nome = input("digite o nome do cliente: ")
+    cpf = input("digite o cpf do cliente: ")
+    idade = input("digite o idade do cliente: ")
+    return Cliente(nome, cpf, idade)
+
+def criar_contas(cliente):
+    saldo_inicial = float(input("digite o saldo inicial da conta:"))
+    limite = float(input("digite o limite da conta:"))
+    return Conta(cliente, saldo_inicial, limite)
+
+cliente1 = criar_cliente()
+conta1 = criar_contas(cliente1)
+
+while True:
+    print("\nEscolha uma opção")
+    print("1. sacar")
+    print("2. depositar")
+    print("3. consultar saldo")
+    print("4. sair")
+    opcao = int(input())
+    if opcao == 1:
+        valor = float(input("digite o valor do saque: "))
+        conta1.sacar(valor)
+    elif opcao == 2:
+        valor = float(input("digite o valor do depósito: "))
+        conta1.valor(valor)
+    elif opcao == 3:
+        conta1.consultar_saldo()
+    elif opcao == 4:
+        print("Finalizando...")
+        break
+    else:
+        print("opção inválida. Tente novamente")
+
