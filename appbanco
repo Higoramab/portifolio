@@ -56,7 +56,7 @@ while True:
         conta1.sacar(valor)
     elif opcao == 2:
         valor = float(input("digite o valor do depósito: "))
-        conta1.valor(valor)
+        conta1.depositar(valor)
     elif opcao == 3:
         conta1.consultar_saldo()
     elif opcao == 4:
